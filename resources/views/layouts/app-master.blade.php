@@ -25,17 +25,28 @@
                 font-size: 3.5rem;
             }
         }
+
+        .float-right {
+            float: right;
+        }
     </style>
 
     <!-- Custom Style for this template -->
     <link rel="stylesheet" href="{!! url('assets/css/app.css') !!}">
 </head>
 <body class="text-center">
+
     @include('layouts.partials.navbar')
-    <main class="container">
+
+    <main class="container mt-5">
         @yield('content')
     </main>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
+
+    @section("scripts")
+        
+    @show
 </body>
 </html>
