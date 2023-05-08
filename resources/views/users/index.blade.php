@@ -46,7 +46,7 @@
                         </td>
                         <td>
                             {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
-                            {!! Form::submit('Delete', 'class' => 'btn btn-danger btn-sm') !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                             {!! Form::close() !!}
                         </td>
                     </tr>

@@ -18,7 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users  = User::latest()->paginate(10);
+        $users  = User::paginate(10);
         return view('users.index', compact('users'));
     }
 
@@ -73,9 +73,9 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         return view('users.edit', [
-            'user'  => $user,
+            'user'      => $user,
             'userRole'  => $user->roles->pluck('name')->toArray(),
-            'roles'     => Role::latest()->get()
+            'roles'     => Role::get()
         ]);
     }
 
@@ -91,7 +91,7 @@ class UsersController extends Controller
     {
         $user->update($request->validated());
 
-        $user->syncRoles($request->get('roles'));
+        $user->syncRoles($request->get('role'));
 
         return redirect()->route('users.index')->withSuccess(__('User update successfully.'));
     }

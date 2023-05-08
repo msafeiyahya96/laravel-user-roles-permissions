@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -15,7 +16,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts  = Post::latest()->paginate(10);
+        $posts  = Post::paginate(10);
 
         return view('posts.index', compact('posts'));
     }
@@ -40,7 +41,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         Post::create(array_merge($request->only('title', 'description', 'body'), [
-            'user_id'   => auth()->id
+            'user_id'   => Auth::id(),
         ]));
 
         return redirect()->route('posts.index')->withSuccess(__('Post created successfully'));
@@ -55,7 +56,7 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.index', ['post' => $post]);
+        return view('posts.show', ['post' => $post]);
     }
 
     /**

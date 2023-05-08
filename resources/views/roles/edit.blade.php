@@ -33,13 +33,13 @@
             <table class=" table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col" width="1%"><input type="checkbox" name="all_persmissions"></th>
+                        <th scope="col" width="1%"><input type="checkbox" name="all_permissions"></th>
                         <th scope="col" width="20%">Name</th>
                         <th scope="col" width="1%">Guard</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($permissions as $pemission)
+                    @foreach ($permissions as $permission)
                         <tr>
                             <td>
                                 <input type="checkbox" name="permission[{{ $permission->name }}]" value="{{ $permission->name }}" class="permission" {{ in_array($permission->name, $rolePermissions) ? 'checked' : '' }}>
@@ -60,7 +60,7 @@
 @section('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-            $('name=all_permissions').on('click', function() {
+            $('[name=all_permissions]').on('click', function() {
                 if($(this).is(':checked')) {
                     $.each($('.permission'), function() {
                         $(this).prop('checked', true);

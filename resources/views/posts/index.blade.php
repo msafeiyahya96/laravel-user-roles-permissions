@@ -33,8 +33,8 @@
                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm">Edit</a>
                         </td>
                         <td>
-                            {!! Form::open(['method' => 'DELETE', 'route' => 'posts.destroy', $post->id], 'style' => 'display:inline') !!}
-                            {!! Form::submit(['class' => 'btn btn-danger btn-sm']) !!}
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id], 'style' => 'display:inline']) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                             {!! Form::close() !!}
                         </td>
                     </tr>

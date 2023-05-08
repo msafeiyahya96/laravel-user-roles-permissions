@@ -34,7 +34,7 @@
                     @endif
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save Post</button>
+                <button type="submit" class="btn btn-primary">Update Post</button>
                 <a href="{{ route('posts.index') }}" class="btn btn-default">Back</a>
             </form>
         </div>

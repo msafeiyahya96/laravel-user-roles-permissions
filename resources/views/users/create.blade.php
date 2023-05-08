@@ -24,6 +24,13 @@
                         <span class="text-danger text-left">{{ $errors->first('username') }}</span>
                     @endif
                 </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" placeholder="Email" required>
+                    @if ($errors->has('email'))
+                        <span class="text-danger text-left">{{ $errors->first('email') }}</span>
+                    @endif
+                </div>
                 <button type="submit" class="btn btn-primary">Save user</button>
                 <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
             </form>

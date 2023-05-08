@@ -15,7 +15,7 @@ class PermissionMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $permission = null, $guard = null)
+    public function handle($request, Closure $next, $permission = null, $guard = null)
     {
         $authGuard  = app('auth')->guard($guard);
 
@@ -24,12 +24,12 @@ class PermissionMiddleware
         }
 
         if (! is_null($permission)) {
-            $permission = is_array($permission)
+            $permissions = is_array($permission)
                 ? $permission
                 : explode('|', $permission);
         }
 
-        if (is_null($permission)) {
+        if ( is_null($permission) ) {
             $permission = $request->route()->getName();
 
             $permissions = array($permission);
@@ -41,6 +41,6 @@ class PermissionMiddleware
             }
         }
 
-        throw UnauthorizedException::forPermissions($permission);
+        throw UnauthorizedException::forPermissions($permissions);
     }
 }

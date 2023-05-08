@@ -11,21 +11,21 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">name</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="Name" required>
+                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $user->name) }}" placeholder="Name" required>
                     @if ($errors->has('name'))
                         <span class="text-danger text-left">{{ $errors->first('name') }}</span>
                     @endif
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" placeholder="Email address" required>
+                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $user->email) }}" placeholder="Email address" required>
                     @if ($errors->has('email'))
                         <span class="text-danger text-left">{{ $errors->first('email') }}</span>
                     @endif
                 </div>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" name="username" id="username" class="form-control" value="{{ old('username') }}" placeholder="Username" required>
+                    <input type="text" name="username" id="username" class="form-control" value="{{ old('username', $user->username) }}" placeholder="Username" required>
                     @if ($errors->has('username'))
                         <span class="text-danger text-left">{{ $errors->first('username') }}</span>
                     @endif
