@@ -18,7 +18,9 @@
             </div>
         </div>
         <div class="mt-4">
-            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info">Edit</a>
+            @can('posts.edit')
+                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info">Edit</a>
+            @endcan
             <a href="{{ route('posts.index') }}" class="btn btn-default">Back</a>
         </div>
     </div>

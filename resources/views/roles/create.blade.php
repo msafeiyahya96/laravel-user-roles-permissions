@@ -50,7 +50,9 @@
                     </tbody>
                 </table>
 
-                <button type="submit" class="btn btn-primary">Save Role</button>
+                @can('roles.store')
+                    <button type="submit" class="btn btn-primary">Save Role</button>
+                @endcan
                 <a href="{{ route('roles.index') }}" class="btn btn-default">Back</a>
             </form>
         </div>

@@ -8,7 +8,9 @@
 
         <div class="lead">
             Manage your users here.
-            <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right">Add new user</a>
+            @can('users.create')
+                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right">Add new user</a>
+            @endcan
         </div>
 
         <div class="mt-2">
@@ -39,15 +41,21 @@
                             @endforeach
                         </td>
                         <td>
-                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning btn-sm">Show</a>
+                            @can('users.show')
+                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning btn-sm">Show</a>
+                            @endcan
                         </td>
                         <td>
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm">Edit</a>
+                            @can('users.edit')
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm">Edit</a>
+                            @endcan
                         </td>
                         <td>
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                            {!! Form::close() !!}
+                            @can('users.destroy')
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                {!! Form::close() !!}
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

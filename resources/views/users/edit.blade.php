@@ -42,8 +42,9 @@
                         <span class="text-danger text-left">{{ $errors->first('role') }}</span>
                     @endif
                 </div>
-
-                <button type="submit" class="btn btn-primary">Update user</button>
+                @can('users.update')
+                    <button type="submit" class="btn btn-primary">Update user</button>
+                @endcan
                 <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</a>
             </form>
         </div>

@@ -51,7 +51,9 @@
                 </tbody>
             </table>
 
-            <button type="submit" class="btn btn-primary">Update change</button>
+            @can('roles.update')
+                <button type="submit" class="btn btn-primary">Update change</button>
+            @endcan
             <a href="{{ route('roles.index') }}" class="btn btn-default">Back</a>
         </form>
     </div>

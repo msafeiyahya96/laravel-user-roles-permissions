@@ -6,7 +6,9 @@
         <h2>Posts</h2>
         <div class="lead">
             Manage your posts here.
-            <a href="{{ route('posts.create') }}" class="btn btn-primary btn-sm float-right">Add Post</a>
+            @can('posts.create')
+                <a href="{{ route('posts.create') }}" class="btn btn-primary btn-sm float-right">Add Post</a>
+            @endcan
         </div>
 
         <div class="mt-2">
@@ -27,15 +29,21 @@
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->title }}</td>
                         <td>
-                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-info btn-sm">Show</a>
+                            @can('posts.show')
+                                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-info btn-sm">Show</a>
+                            @endcan
                         </td>
                         <td>
-                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                            @can('posts.edit')
+                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                            @endcan
                         </td>
                         <td>
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id], 'style' => 'display:inline']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                            {!! Form::close() !!}
+                            @can('posts.destroy')
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id], 'style' => 'display:inline']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                {!! Form::close() !!}
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

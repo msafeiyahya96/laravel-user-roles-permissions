@@ -33,7 +33,9 @@
                     @endif
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save Post</button>
+                @can('posts.store')
+                    <button type="submit" class="btn btn-primary">Save Post</button>
+                @endcan
                 <a href="{{ route('posts.index') }}" class="btn btn-default">Back</a>
             </form>
         </div>

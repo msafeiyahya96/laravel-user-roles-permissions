@@ -31,7 +31,9 @@
                         <span class="text-danger text-left">{{ $errors->first('email') }}</span>
                     @endif
                 </div>
-                <button type="submit" class="btn btn-primary">Save user</button>
+                @can('users.store') 
+                    <button type="submit" class="btn btn-primary">Save user</button>
+                @endcan
                 <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
             </form>
         </div>
